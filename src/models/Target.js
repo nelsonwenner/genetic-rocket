@@ -8,7 +8,7 @@ class Target{
 
     draw = () => {
         let img = new Image();
-        img.src = "../Rocket/src/assets/img/army2.png";
+        img.src = "../genetic-rocket/src/assets/img/army2.png";
         this.context.drawImage(img, this.position.x, this.position.y, this.width, this.height);
     }
 }

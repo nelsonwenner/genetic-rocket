@@ -12,7 +12,6 @@ class Population{
     }
     
     buildPopulation = () => {
-        if (this.rockets.length > 0) this.rockets = [];
         for (let i = 0; i < this.sizePopulation; i++){
             this.rockets[i] = new Rocket(50, this.canvasBackground.height/2, this.target, this.context);
         }

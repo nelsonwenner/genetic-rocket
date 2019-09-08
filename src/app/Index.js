@@ -13,7 +13,7 @@ class Index{
     start = () => {
         this.loop();
     }
-
+    
     createCanvas = () => {
         let canvas = document.createElement("canvas");
         canvas.width = this.width;

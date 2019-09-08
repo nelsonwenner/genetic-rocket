@@ -29,7 +29,7 @@ class Rocket{
             this.position.y + this.height > this.target.position.y         &&
             this.position.y < this.target.position.y + this.target.height) {
             this.success = true;
-            console.log("TOCOU");
+         
         }
 
         if (!this.death && !this.success) {
@@ -42,18 +42,16 @@ class Rocket{
 
     findFitness = () => {
         let fitness = this.distanceBetweenTwoPoints(this.position, this.target.position);
-        this.fitness = 1 / fitness;
+        this.fitness = Math.pow(1 / fitness, 2);
 
-        if (!this.success) this.fitness *= 3;
+        if (this.success == true){
+            this.fitness += 1;
+        }  
     }
   
     addNewDna = (dna) => {
         this.dna = dna;
         return this;
-    }
-
-    newMap = (valor, start1, stop1, start2, stop2) => {
-       return ((valor - start1) / (stop1 - start1)) * (stop2 - start2) + start2; 
     }
 
     distanceBetweenTwoPoints = (a, b) => {
@@ -62,7 +60,7 @@ class Rocket{
     
     rocketImg = () => {
         let img = new Image();
-        img.src = "../Rocket/src/assets/img/rocket03.png";
+        img.src = "../genetic-rocket/src/assets/img/rocket03.png";
         this.context.drawImage(img, -this.width/2, -this.height/2, this.width, this.height);
     }
 
