@@ -1,0 +1,13 @@
+canvas {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    border: 1px solid white;
+    margin: auto;
+}
+
+body {
+    background: gray;
+}
