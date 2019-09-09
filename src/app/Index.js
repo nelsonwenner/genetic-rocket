@@ -7,7 +7,7 @@ class Index{
         this.context = this.createCanvas();
         this.target = new Target(1150, this.height/2, 30, 30, this.context);
         this.obstacle = new Obstacle(this.width/2, this.height/2 - 270, 30, 550, this.context);
-        this.population = new Population(100, this.target, this.obstacle, this.context);
+        this.population = new Population(500, this.target, this.obstacle, this.context);
         this.start();
     }
     
