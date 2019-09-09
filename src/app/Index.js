@@ -6,14 +6,15 @@ class Index{
         this.indice = 0;
         this.context = this.createCanvas();
         this.target = new Target(1150, this.height/2, 30, 30, this.context);
-        this.population = new Population(100, this.target, this.context);
+        this.obstacle = new Obstacle(this.width/2, this.height/2 - 270, 30, 550, this.context);
+        this.population = new Population(100, this.target, this.obstacle, this.context);
         this.start();
     }
     
     start = () => {
         this.loop();
     }
-    
+
     createCanvas = () => {
         let canvas = document.createElement("canvas");
         canvas.width = this.width;
@@ -38,9 +39,9 @@ class Index{
             this.indice = 0;
         }
 
-        this.context.clearRect(0, 0, this.width, this.height);
         this.background();
         this.target.draw();
+        this.obstacle.draw();
         this.population.rocketUpdatePosition();
         this.population.evaluate();
         this.population.rocketDraw();
