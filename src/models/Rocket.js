@@ -1,6 +1,6 @@
 class Rocket{
     constructor(x, y, target, obstacle, context){
-        this.canvasBackground = {width: 1280, height: 720};
+        this.canvasBackground = {width: 1200, height: 690};
         this.position = new Vector(x, y);
         this.velocity = new Vector(0, 0);
         this.acceleration = new Vector(0, 0);
@@ -17,11 +17,11 @@ class Rocket{
         this.indice = 0;
         this.dna = new Dna(50);
     }
-    // w: 6 h: 25
+    // w: 20 h: 5
     update = () => {
-        if (this.position.x + this.width > this.canvasBackground.width     ||
-            this.position.x < 0                                            ||
-            this.position.y + this.height > this.canvasBackground.height   ||
+        if (this.position.x + this.width > this.canvasBackground.width         ||
+            this.position.x < 0                                                ||
+            this.position.y + this.height > this.canvasBackground.height       ||
             this.position.y < 0) {
             this.death= true;
         }
@@ -32,13 +32,15 @@ class Rocket{
             this.position.y < this.target.position.y + this.target.height) {
             this.success = true;
         }
-
-        if (this.position.x + this.width > this.obstacle.position.x             &&
-            this.position.x < this.obstacle.position.x + this.obstacle.width    &&
-            this.position.y + this.height > this.obstacle.position.y            &&
-            this.position.y < this.obstacle.position.y + this.obstacle.height) {
-            this.deathInObstacle = true;
-            this.death= true;
+            
+        for (let i=0; i < this.obstacle.length; i++) {
+            if (this.position.x + this.width > this.obstacle[i].position.x                  &&
+                this.position.x < this.obstacle[i].position.x + this.obstacle[i].width      &&
+                this.position.y + this.height > this.obstacle[i].position.y                 &&
+                this.position.y < this.obstacle[i].position.y + this.obstacle[i].height) {
+                this.deathInObstacle = true;
+                this.death= true;
+            }
         }
 
         if (!this.death && !this.success) {
@@ -74,27 +76,20 @@ class Rocket{
     distanceBetweenTwoPoints = (a, b) => {
         return Math.sqrt(Math.pow(b.x - a.x, 2) + Math.pow(b.y - a.y, 2));
     }
-    
-    rocketImg = () => {
-        let img = new Image();
-        img.src = "../genetic-rocket/src/assets/img/rocket03.png";
-        this.context.drawImage(img, -this.width/2, -this.height/2, this.width, this.height);
-    }
 
     draw = () => {
         let angle = this.velocity.getAngle();
         this.context.translate(this.position.x + this.width/2, this.position.y + this.height/2);
         this.context.rotate(-angle);
-        this.context.fillStyle = 'yellow';
+        this.context.fillStyle = 'rgba(225,225,225,0.5)';
         this.handlersCores();
         this.context.fillRect(-this.width/2, -this.height/2, this.width, this.height);
-        //this.rocketImg();
         this.context.rotate(angle);
         this.context.translate(-this.position.x - this.width/2, -this.position.y - this.height/2);
     }
 
     handlersCores = () => {
-        if (this.success) this.context.fillStyle = 'green';
+        if (this.success) this.context.fillStyle = 'yellow';
         else if (this.death) this.context.fillStyle = 'red';
     }
 

@@ -1,18 +1,37 @@
 class Index{
     constructor(){
-        this.width = 1280;
-        this.height = 720;
+        this.width = 1200;
+        this.height = 690;
         this.frame = 0;
         this.indice = 0;
         this.context = this.createCanvas();
         this.target = new Target(1150, this.height/2, 30, 30, this.context);
-        this.obstacle = new Obstacle(this.width/2, this.height/2 - 270, 30, 550, this.context);
-        this.population = new Population(500, this.target, this.obstacle, this.context);
+        this.obstacle = [];
+        this.createObstacle();
+        this.population = new Population(1500, this.target, this.obstacle, this.context);
+        this.renderhtml();
         this.start();
     }
     
     start = () => {
         this.loop();
+    }
+
+    createObstacle = () => {
+        this.obstacle.push(new Obstacle(260, 120, 30, 460, this.context));
+        this.obstacle.push(new Obstacle(523, 0, 30, 300, this.context));
+        this.obstacle.push(new Obstacle(850, 0, 30, 600, this.context));
+        this.obstacle.push(new Obstacle(523, 500, 30, 200, this.context));
+    }
+
+    obstacleDraw = () => {
+        for (let i=0; i < this.obstacle.length; i++) {
+            this.obstacle[i].draw();
+        }
+    }
+
+    renderhtml = () => {
+        nav();
     }
 
     createCanvas = () => {
@@ -27,21 +46,29 @@ class Index{
         window.requestAnimationFrame(this.loop);
         this.update();
     }
-    
-    update = () => {
-        if (this.frame % 15 === 0){
+
+    tempLife = () => {
+        if (this.frame % 15 === 0) {
             this.population.startIndiceGenes(this.indice);
             this.indice++;
         }
-        
-        if (this.indice >= 49) {
+    }
+
+    nextGeneration = (qntGenes) => {
+        if (this.indice >= qntGenes) {
             this.population.repopulation();
             this.indice = 0;
         }
+    }
+
+    update = () => {
+
+        this.tempLife();
+        this.nextGeneration(49);
 
         this.background();
         this.target.draw();
-        this.obstacle.draw();
+        this.obstacleDraw();
         this.population.rocketUpdatePosition();
         this.population.evaluate();
         this.population.rocketDraw();

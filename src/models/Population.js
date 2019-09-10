@@ -1,6 +1,6 @@
 class Population{
     constructor(sizePopulation, target, obstacle, context) {
-        this.canvasBackground = {width: 1280, height: 720};
+        this.canvasBackground = {width: 1200, height: 690};
         this.sizePopulation = sizePopulation;
         this.generation = 0;
         this.breedingPool = [];
@@ -14,7 +14,7 @@ class Population{
     
     buildPopulation = () => {
         for (let i = 0; i < this.sizePopulation; i++){
-            this.rockets[i] = new Rocket(270, this.canvasBackground.height/2, this.target, this.obstacle, this.context);
+            this.rockets[i] = new Rocket(100, this.canvasBackground.height/2, this.target, this.obstacle, this.context);
         }
     }
     
@@ -57,7 +57,7 @@ class Population{
 
             newDna.mutation(this.rateMutation);
 
-            let child = new Rocket(270, this.canvasBackground.height/2, this.target, this.obstacle, this.context);
+            let child = new Rocket(100, this.canvasBackground.height/2, this.target, this.obstacle, this.context);
 
             child.addNewDna(newDna);
 

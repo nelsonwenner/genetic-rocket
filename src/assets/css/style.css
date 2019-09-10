@@ -1,13 +1,63 @@
 canvas {
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
+    margin-top: 50px;
+    display: block;
+    max-width: 1200px;
+    margin: 0 auto; 
     border: 1px solid white;
-    margin: auto;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
 }
 
 body {
-    background: gray;
+    background: #fff;
+    /*background: gray;*/
+    margin: 0px;
+    padding: 0px;
+}
+
+.bg-color {
+    background: #343a40;
+}
+
+.margin-top-110 {
+    margin-top: 30px;
+}
+
+.margin-botton-50 {
+    margin-bottom: 50px;
+}
+
+.logo {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.my-container-flex {
+    max-width: 1200px;
+    margin: 0 auto; 
+}
+
+.card-style {
+    background: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+}
+
+.card-item-flex {
+    flex: 1px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    margin-left: 10px;
+    margin-right: 10px;
+    flex-direction: column;
+    background-color: #f8f9fa;
+    text-align: center;
+    height: 150px;
+    width: 300px;
+    font-size: 1.5em;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    background-clip: border-box;
 }

@@ -7,7 +7,8 @@ class Obstacle{
     }
     
     draw = () => {
-        this.context.fillStyle = 'blue';
+        this.context.fillStyle = 'green';
         this.context.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
 }
+
