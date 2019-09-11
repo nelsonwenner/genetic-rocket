@@ -21,4 +21,15 @@ class Vector{
         this.x += vector.x;
         this.y += vector.y;
     }
+    
+    static difference(position, ...vector) {
+        let x = position.x;
+        let y = position.y;
+
+        for (let i=0; i < vector.length; i++) {
+            x -= vector[i].x;
+            y -= vector[i].y;
+        }
+        return new Vector(x, y);
+    }
 }

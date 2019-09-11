@@ -8,7 +8,7 @@ class Index{
         this.target = new Target(1150, this.height/2, 30, 30, this.context);
         this.obstacle = [];
         this.createObstacle();
-        this.population = new Population(1500, this.target, this.obstacle, this.context);
+        this.population = new Population(1000, this.target, this.obstacle, this.context);
         this.renderhtml();
         this.start();
     }
@@ -18,10 +18,10 @@ class Index{
     }
 
     createObstacle = () => {
-        this.obstacle.push(new Obstacle(260, 120, 30, 460, this.context));
-        this.obstacle.push(new Obstacle(523, 0, 30, 300, this.context));
-        this.obstacle.push(new Obstacle(850, 0, 30, 600, this.context));
-        this.obstacle.push(new Obstacle(523, 500, 30, 200, this.context));
+        //this.obstacle.push(new Obstacle(260, 300, 30, 460, this.context));
+        this.obstacle.push(new Obstacle(350, 0, 30, 280, this.context));
+        this.obstacle.push(new Obstacle(350, 450, 30, 300, this.context));
+        this.obstacle.push(new Obstacle(850, 215, 30, 300, this.context));
     }
 
     obstacleDraw = () => {
@@ -48,7 +48,7 @@ class Index{
     }
 
     tempLife = () => {
-        if (this.frame % 15 === 0) {
+        if (this.frame % 15 == 0) {
             this.population.startIndiceGenes(this.indice);
             this.indice++;
         }
@@ -79,6 +79,7 @@ class Index{
         this.context.fillStyle = "black";
         this.context.fillRect(0, 0, this.width, this.height);
     }
+    
 }
 
-new Index();
+let game = new Index();

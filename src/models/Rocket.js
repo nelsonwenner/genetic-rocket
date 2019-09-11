@@ -32,7 +32,7 @@ class Rocket{
             this.position.y < this.target.position.y + this.target.height) {
             this.success = true;
         }
-            
+
         for (let i=0; i < this.obstacle.length; i++) {
             if (this.position.x + this.width > this.obstacle[i].position.x                  &&
                 this.position.x < this.obstacle[i].position.x + this.obstacle[i].width      &&
