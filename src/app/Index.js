@@ -79,7 +79,6 @@ class Index{
         this.context.fillStyle = "black";
         this.context.fillRect(0, 0, this.width, this.height);
     }
-    
 }
 
 let game = new Index();
