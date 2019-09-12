@@ -1,5 +1,5 @@
 class Rocket{
-    constructor(x, y, target, obstacle, context){
+    constructor(x, y, target, obstacle, context, rocket){
         this.canvasBackground = {width: 1200, height: 690};
         this.position = new Vector(x, y);
         this.velocity = new Vector(0, 0);
@@ -12,11 +12,15 @@ class Rocket{
         this.success = false;
         this.death = false;
         this.deathInObstacle = false;
-        this.width = 20;
-        this.height = 5;
+        this.width = 30;
+        this.height = 35;
         this.indice = 0;
+        this.newRocket = this.instanceImg('../genetic-rocket/src/assets/img/rocket.png');
+        this.explosion = this.instanceImg('../genetic-rocket/src/assets/img/explosion.png');
+        this.rocketSucess = this.instanceImg('../genetic-rocket/src/assets/img/sucess.png');
         this.dna = new Dna(50);
     }
+
     // w: 20 h: 5
     update = () => {
         if (this.position.x + this.width > this.canvasBackground.width         ||
@@ -77,20 +81,25 @@ class Rocket{
         return Math.sqrt(Math.pow(b.x - a.x, 2) + Math.pow(b.y - a.y, 2));
     }
 
+    instanceImg = (path) => {
+        let img = new Image();
+        img.src = path;
+        return img;
+    }
+
     draw = () => {
         let angle = this.velocity.getAngle();
         this.context.translate(this.position.x + this.width/2, this.position.y + this.height/2);
         this.context.rotate(-angle);
-        this.context.fillStyle = 'rgba(225,225,225,0.5)';
-        this.handlersCores();
-        this.context.fillRect(-this.width/2, -this.height/2, this.width, this.height);
+        this.context.drawImage(this.newRocket, -this.width/2, -this.height/2, this.height, this.width);
+        this.handlersStateRocket();
         this.context.rotate(angle);
         this.context.translate(-this.position.x - this.width/2, -this.position.y - this.height/2);
     }
 
-    handlersCores = () => {
-        if (this.success) this.context.fillStyle = 'yellow';
-        else if (this.death) this.context.fillStyle = 'red';
+    handlersStateRocket = () => {
+        if (this.success) this.context.drawImage(this.rocketSucess, -this.width/2, -this.height/2, this.height+10, this.width);
+        else if (this.death) this.context.drawImage(this.explosion, -this.width/2, -this.height/2, this.height, this.width);
     }
 
 }
