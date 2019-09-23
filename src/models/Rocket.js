@@ -1,5 +1,5 @@
 class Rocket{
-    constructor(x, y, target, obstacle, context, rocket){
+    constructor(x, y, target, obstacle, context){
         this.canvasBackground = {width: 1200, height: 690};
         this.position = new Vector(x, y);
         this.velocity = new Vector(0, 0);
@@ -21,7 +21,6 @@ class Rocket{
         this.dna = new Dna(50);
     }
 
-    // w: 20 h: 5
     update = () => {
         if (this.position.x + this.width > this.canvasBackground.width         ||
             this.position.x < 0                                                ||
@@ -86,7 +85,7 @@ class Rocket{
         img.src = path;
         return img;
     }
-
+    
     draw = () => {
         let angle = this.velocity.getAngle();
         this.context.translate(this.position.x + this.width/2, this.position.y + this.height/2);
@@ -98,7 +97,7 @@ class Rocket{
     }
 
     handlersStateRocket = () => {
-        if (this.success) this.context.drawImage(this.rocketSucess, -this.width/2, -this.height/2, this.height+10, this.width);
+        if (this.success) this.context.drawImage(this.rocketSucess, -this.width/2, -this.height/2, this.height, this.width);
         else if (this.death) this.context.drawImage(this.explosion, -this.width/2, -this.height/2, this.height, this.width);
     }
 

@@ -8,7 +8,8 @@ class Index{
         this.target = new Target(1150, this.height/2, 30, 30, this.context);
         this.obstacle = [];
         this.createObstacle();
-        this.population = new Population(1000, this.target, this.obstacle, this.context);
+        this.population = new Population(250, this.target, this.obstacle, this.context);
+        this.imgBackground = this.instanceImg('../genetic-rocket/src/assets/img/background1.png');
         this.renderhtml();
         this.start();
     }
@@ -18,10 +19,9 @@ class Index{
     }
 
     createObstacle = () => {
-        //this.obstacle.push(new Obstacle(260, 300, 30, 460, this.context));
-        this.obstacle.push(new Obstacle(350, 0, 30, 280, this.context));
-        this.obstacle.push(new Obstacle(350, 450, 30, 300, this.context));
-        this.obstacle.push(new Obstacle(850, 215, 30, 300, this.context));
+        this.obstacle.push(new Obstacle(350, 0, 65, 280, this.context));
+        this.obstacle.push(new Obstacle(350, 450, 65, 300, this.context));
+        this.obstacle.push(new Obstacle(850, 215, 65, 300, this.context));
     }
 
     obstacleDraw = () => {
@@ -32,6 +32,8 @@ class Index{
 
     renderhtml = () => {
         nav();
+        this.div('div', 'manager');
+        manager();
     }
 
     createCanvas = () => {
@@ -74,12 +76,26 @@ class Index{
         this.population.rocketDraw();
         this.frame++;
     }
-
+    
     background = () => {
-        this.context.fillStyle = "black";
-        this.context.fillRect(0, 0, this.width, this.height);
+        this.context.drawImage(this.imgBackground, 0, 0, this.width, this.height);
+        this.context.font = "30px Arial";
+        this.context.fillStyle = "red";
+        this.context.fillText("Population: 250", 250, this.height/2);
+    }
+    
+    instanceImg = (path) => {
+        let img = new Image();
+        img.src = path;
+        return img;
+    }
+
+    div = (tag, id) => {
+        const name = document.createElement(tag);
+        name.id = id;
+        document.body.appendChild(name);
     }
     
 }
 
-let game = new Index();
+new Index();
