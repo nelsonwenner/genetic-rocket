@@ -8,7 +8,7 @@ class Index{
         this.target = new Target(1150, this.height/2, 30, 30, this.context);
         this.obstacle = [];
         this.createObstacle();
-        this.population = new Population(1000, this.target, this.obstacle, this.context);
+        this.population = new Population(500, this.target, this.obstacle, this.context);
         this.imgBackground = this.instanceImg('../genetic-rocket/src/assets/img/background.png');
         this.renderhtml();
         this.start();
@@ -19,9 +19,9 @@ class Index{
     }
 
     createObstacle = () => {
-        this.obstacle.push(new Obstacle(350, 0, 65, 280, this.context));
-        this.obstacle.push(new Obstacle(350, 450, 65, 300, this.context));
-        this.obstacle.push(new Obstacle(850, 215, 65, 300, this.context));
+        this.obstacle.push(new Obstacle(350, 0, 30, 280, this.context));
+        this.obstacle.push(new Obstacle(350, 450, 30, 300, this.context));
+        this.obstacle.push(new Obstacle(850, 215, 30, 300, this.context));
     }
 
     obstacleDraw = () => {
@@ -72,7 +72,7 @@ class Index{
 
         this.tempLife();
         this.nextGeneration(49);
-
+        
         this.background();
         this.target.draw();
         this.obstacleDraw();
