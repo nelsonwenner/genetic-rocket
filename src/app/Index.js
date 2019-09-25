@@ -8,7 +8,7 @@ class Index{
         this.target = new Target(1150, this.height/2, 30, 30, this.context);
         this.obstacle = [];
         this.createObstacle();
-        this.population = new Population(250, this.target, this.obstacle, this.context);
+        this.population = new Population(1000, this.target, this.obstacle, this.context);
         this.imgBackground = this.instanceImg('../genetic-rocket/src/assets/img/background1.png');
         this.renderhtml();
         this.start();
@@ -58,6 +58,13 @@ class Index{
 
     nextGeneration = (qntGenes) => {
         if (this.indice >= qntGenes) {
+            
+            if (this.population.hit > this.population.bestHit) {
+                this.population.bestHit = this.population.hit;
+            }
+
+            this.population.hit = 0;
+
             this.population.repopulation();
             this.indice = 0;
         }
@@ -72,16 +79,26 @@ class Index{
         this.target.draw();
         this.obstacleDraw();
         this.population.rocketUpdatePosition();
+        this.population.hit = this.population.tests();
+        this.info();
         this.population.evaluate();
         this.population.rocketDraw();
         this.frame++;
     }
     
     background = () => {
+        //this.context.fillStyle = 'black';
+        //this.context.fillRect(0, 0, this.width, this.height);
         this.context.drawImage(this.imgBackground, 0, 0, this.width, this.height);
-        this.context.font = "30px Arial";
-        this.context.fillStyle = "red";
-        this.context.fillText("Population: 250", 250, this.height/2);
+    }
+
+    info = () => {
+        this.context.font = "15px Arial";
+        this.context.fillStyle = "yellow";
+        this.context.fillText(`Population: ${this.population.sizePopulation}`, 100, this.height/2 - 270);
+        this.context.fillText(`Generation: ${this.population.generation}`, 100, this.height/2 - 250);
+        this.context.fillText(`Number of hit: ${this.population.hit} / ${this.population.sizePopulation}`, 100, this.height/2 - 230);
+        this.context.fillText(`Best hit: ${this.population.bestHit}`, 100, this.height/2 - 210);
     }
     
     instanceImg = (path) => {

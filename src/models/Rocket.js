@@ -12,12 +12,12 @@ class Rocket{
         this.success = false;
         this.death = false;
         this.deathInObstacle = false;
-        this.width = 30;
-        this.height = 35;
+        this.width = 20;
+        this.height = 5;
         this.indice = 0;
-        this.newRocket = this.instanceImg('../genetic-rocket/src/assets/img/rocket.png');
-        this.explosion = this.instanceImg('../genetic-rocket/src/assets/img/explosion.png');
-        this.rocketSucess = this.instanceImg('../genetic-rocket/src/assets/img/sucess.png');
+        //this.newRocket = this.instanceImg('../genetic-rocket/src/assets/img/rocket.png');
+        //this.explosion = this.instanceImg('../genetic-rocket/src/assets/img/explosion.png');
+        //this.rocketSucess = this.instanceImg('../genetic-rocket/src/assets/img/sucess.png');
         this.dna = new Dna(50);
     }
 
@@ -85,20 +85,32 @@ class Rocket{
         img.src = path;
         return img;
     }
-    
+
     draw = () => {
         let angle = this.velocity.getAngle();
         this.context.translate(this.position.x + this.width/2, this.position.y + this.height/2);
         this.context.rotate(-angle);
-        this.context.drawImage(this.newRocket, -this.width/2, -this.height/2, this.height, this.width);
-        this.handlersStateRocket();
+        //this.context.drawImage(this.newRocket, -this.width/2, -this.height/2, this.height, this.width);
+        //this.handlersStateRocket();
+        this.context.fillStyle = 'yellow';
+        this.context.fillStyle = 'rgba(225,225,225,0.5)';
+        this.handlersCores();
+        this.context.fillRect(-this.width/2, -this.height/2, this.width, this.height);
         this.context.rotate(angle);
         this.context.translate(-this.position.x - this.width/2, -this.position.y - this.height/2);
     }
 
+    /*
     handlersStateRocket = () => {
         if (this.success) this.context.drawImage(this.rocketSucess, -this.width/2, -this.height/2, this.height, this.width);
         else if (this.death) this.context.drawImage(this.explosion, -this.width/2, -this.height/2, this.height, this.width);
+    }
+    */
+
+   handlersCores = () => {
+    if (this.success) this.context.fillStyle = 'green';
+    if (this.success) this.context.fillStyle = 'yellow';
+    else if (this.death) this.context.fillStyle = 'red';
     }
 
 }
