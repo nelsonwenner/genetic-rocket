@@ -9,6 +9,8 @@ class Population{
         this.rockets = [];
         this.context = context;
         this.rateMutation = 0.01;
+        this.hit = 0;
+        this.bestHit = 0;
         this.buildPopulation();
     }
     
@@ -86,8 +88,24 @@ class Population{
         for (let i=0; i < this.sizePopulation; i++) {
             if (this.rockets[i].deathInObstacle != true){
                 this.rockets[i].update();
+
+                if (this.rockets[i].success){
+                    this.hit += 1;
+                }
             }
         }
+    }
+
+    infoHit = () => {
+        this.count = 0;
+        for (let i=0; i < this.sizePopulation; i++) {
+            if (this.rockets[i].deathInObstacle != true){
+                if (this.rockets[i].success){
+                    this.count += 1;
+                }
+            }
+        }
+        return this.count;
     }
 
     rocketDraw = () => {
