@@ -5,7 +5,7 @@ class Index{
         this.frame = 0;
         this.indice = 0;
         this.context = this.createCanvas();
-        this.target = new Target(1150, this.height/2, 30, 30, this.context);
+        this.target = new Target(1150, this.height/2, 40, 40, this.context); // Faze 01: 1150 | 210
         this.obstacle = [];
         this.createObstacle();
         this.population = new Population(500, this.target, this.obstacle, this.context);
@@ -19,9 +19,9 @@ class Index{
     }
 
     createObstacle = () => {
-        this.obstacle.push(new Obstacle(350, 0, 30, 280, this.context));
-        this.obstacle.push(new Obstacle(350, 450, 30, 300, this.context));
-        this.obstacle.push(new Obstacle(850, 215, 30, 300, this.context));
+        this.obstacle.push(new Obstacle(350, 0, 40, 280, this.context));
+        this.obstacle.push(new Obstacle(350, 450, 40, 300, this.context));
+        this.obstacle.push(new Obstacle(850, 215, 40, 300, this.context));
     }
 
     obstacleDraw = () => {
@@ -46,8 +46,9 @@ class Index{
         window.requestAnimationFrame(this.loop);
         this.update();
     }
-
+    
     tempLife = () => {
+        // 15 é a quantidade de frame que tera o intervalo entre a criação de um rocket.
         if (this.frame % 15 == 0) {
             this.population.startIndiceGenes(this.indice);
             this.indice++;
@@ -78,15 +79,13 @@ class Index{
         this.obstacleDraw();
         this.population.rocketUpdatePosition();
         this.population.hit = this.population.infoHit();
-        this.info();
         this.population.evaluate();
         this.population.rocketDraw();
+        this.info();
         this.frame++;
     }
 
     background = () => {
-        //this.context.fillStyle = "black";
-        //this.context.fillRect(0, 0, this.width, this.height);
         this.context.drawImage(this.imgBackground, 0, 0, this.width, this.height);
     }
 

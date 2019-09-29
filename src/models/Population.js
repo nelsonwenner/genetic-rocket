@@ -107,7 +107,7 @@ class Population{
         }
         return this.count;
     }
-
+    
     rocketDraw = () => {
         for (let i=0; i < this.sizePopulation; i++) {
             this.rockets[i].draw();

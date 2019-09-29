@@ -4,20 +4,11 @@ class Obstacle{
         this.context = context;
         this.width = width;
         this.height = height;
-        //this.meteor = this.instanceImg('../genetic-rocket/src/assets/img/meteor.png');
     }
     
     draw = () => {
         this.context.fillStyle = 'rgba(0, 0, 0, 0.5';
         this.context.fillRect(this.position.x, this.position.y, this.width, this.height);
-
-        //this.context.drawImage(this.meteor, this.position.x, this.position.y, this.width, this.height);
-    }
-
-    instanceImg = (path) => {
-        let img = new Image();
-        img.src = path;
-        return img;
     }
 }
 
