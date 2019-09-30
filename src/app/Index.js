@@ -5,7 +5,7 @@ class Index{
         this.frame = 0;
         this.indice = 0;
         this.context = this.createCanvas();
-        this.target = new Target(1150, this.height/2, 40, 40, this.context); // Faze 01: 1150 | 210
+        this.target = new Target(1150, this.height/2, 40, 40, this.context);
         this.obstacle = [];
         this.createObstacle();
         this.population = new Population(500, this.target, this.obstacle, this.context);
