@@ -1,7 +1,5 @@
 # <center> Genetic Rocket </center>
 
-## Preview
-
 <center><img src="demo.gif"/></center>
 
 ### O que são algoritmos genéticos?
