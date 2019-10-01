@@ -2,6 +2,8 @@
 
 <center><img src="demo.gif"/></center>
 
+Project Page Link: https://nelsondiaas.github.io/genetic-rocket/
+
 ### O que são algoritmos genéticos?
 
 O algoritmo genético é um método para resolver problemas de otimização restritos e não restritos que é baseado na seleção natural, o processo que impulsiona a evolução biológica. O algoritmo genético modifica repetidamente uma população de soluções individuais. Em cada etapa, o algoritmo genético seleciona os indivíduos aleatoriamente da população atual para serem pais e os utiliza para produzir as crianças para a próxima geração. Ao longo de gerações sucessivas, a população "evolui" em direção a uma solução ótima. Você pode aplicar o algoritmo genético para resolver uma variedade de problemas de otimização que não são adequados para algoritmos de otimização padrão, incluindo problemas nos quais a função objetivo é descontínua, não diferenciável, estocástica ou altamente não-linear.
