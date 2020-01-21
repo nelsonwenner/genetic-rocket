@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img src="https://user-images.githubusercontent.com/40550247/72770294-2fdbcf80-3bdc-11ea-80a3-f39fa9fd0e3f.gif"/>
+  <img src="https://user-images.githubusercontent.com/40550247/72228004-81071600-3581-11ea-9972-1cbe906001ed.png" width="120px" />
 </h1>
 
 <h1 align="center">
@@ -35,6 +35,10 @@ O algoritmo genético usa três tipos principais de regras em cada etapa para cr
 * **As regras de crossover** combinam dois pais para formar filhos para a próxima geração.
 
 * **As regras de mutação** aplicam alterações aleatórias a pais individuais para formar filhos.
+
+<h1 align="center">
+  <img src="https://user-images.githubusercontent.com/40550247/72770294-2fdbcf80-3bdc-11ea-80a3-f39fa9fd0e3f.gif"/>
+</h1>
 
 ## License
 
